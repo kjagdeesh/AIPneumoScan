@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS CareInfo (
 
 care_data = [
     ("NORMAL", "No action needed. Patient is healthy."),
-    ("PNEUMONIA", "Suggest medical attention. Common treatments: antibiotics, oxygen therapy, hospitalization depending on severity.")
+    ("PNEUMONIA", "Seek immediate medical attention.")
 ]
 
 cursor.executemany("INSERT OR IGNORE INTO CareInfo (label, suggestion) VALUES (?, ?)", care_data)
