@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AIPneumoScan.Views.AboutPage"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             NavigationPage.HasBackButton="False"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightPrimaryBg}, Dark={StaticResource DarkPrimaryBg}}"
+             Title="About">
+
+    <Grid>
+        <ScrollView>
+            <VerticalStackLayout Padding="24" Spacing="32" Margin="0,0,0,80">
+
+                <!-- App Icon & Title -->
+                <Image Source="ic_logo.png"
+                       HeightRequest="100"
+                       HorizontalOptions="Center" />
+
+                <Label Text="AI PneumoScan – Instant Pneumonia Detection from X-Rays"
+                       FontSize="28"
+                       HorizontalTextAlignment="Center"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       TextColor="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}" />
+
+                <Label Text="Version 1.0.0"
+                        FontSize="16"
+                        HorizontalOptions="Center"
+                        TextColor="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}" />
+
+                <!-- Description -->
+                <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray900}}"
+                        CornerRadius="20"
+                        Padding="20"
+                        HasShadow="True">
+                    <VerticalStackLayout>
+                        <Label Text="📝 Description"
+                               FontSize="18"
+                               HorizontalTextAlignment="Center"
+                               Margin="0,0,0,8"
+                               FontAttributes="Bold"
+                               TextColor="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}" />
+
+                        <Label Text="AI PneumoScan is a smart, AI-powered medical imaging assistant that helps detect signs of pneumonia from chest X-ray images in seconds. Designed for doctors, radiologists, and medical students, the app uses a deep learning model trained on real clinical datasets to provide fast and reliable predictions right from your mobile device."
+                               FontSize="16"
+                               TextColor="{AppThemeBinding Light={StaticResource LightSecondaryText}, Dark={StaticResource DarkPrimaryText}}" />
+
+                    </VerticalStackLayout>
+
+                </Frame>
+
+
+                <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray900}}"
+                       CornerRadius="20"
+                       Padding="20"
+                       HasShadow="True">
+
+                    <VerticalStackLayout Spacing="16">
+                        <Label Text="✨ Key Features"
+                               FontSize="18"
+                               HorizontalTextAlignment="Center"
+                               Margin="0,0,0,8"
+                               FontAttributes="Bold"
+                               TextColor="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}" />
+                        <VerticalStackLayout>
+                            <Label Text="🧠 AI-Powered Diagnosis:"
+                                   FontSize="16"
+                                   Margin="0,0,0,5"
+                                   FontAttributes="Bold"
+                                   TextColor="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}" />
+                            <Label Text="Instantly analyze chest X-rays using a high-accuracy neural network trained on the publicly available NIH/Kaggle dataset."
+                                   FontSize="16"
+                                   TextColor="{AppThemeBinding Light={StaticResource LightSecondaryText}, Dark={StaticResource DarkPrimaryText}}" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout>
+                            <Label Text="🖼️ Easy Image Input:"
+                                   FontSize="16"
+                                   Margin="0,0,0,5"
+                                   FontAttributes="Bold"
+                                   TextColor="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}" />
+                            <Label Text="Capture photos directly from your camera or select existing X-ray images from your gallery."
+                                   FontSize="16"
+                                   TextColor="{AppThemeBinding Light={StaticResource LightSecondaryText}, Dark={StaticResource DarkPrimaryText}}" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout>
+                            <Label Text="📲 Offline Inference:"
+                                   FontSize="16"
+                                   Margin="0,0,0,5"
+                                   FontAttributes="Bold"
+                                   TextColor="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}" />
+                            <Label Text="All predictions are run locally using ONNX — no internet required, and no data leaves your device."
+                                   FontSize="16"
+                                   TextColor="{AppThemeBinding Light={StaticResource LightSecondaryText}, Dark={StaticResource DarkPrimaryText}}" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout>
+                            <Label Text="🪶 Fast &amp; Lightweight:"
+                                   FontSize="16"
+                                   Margin="0,0,0,5"
+                                   FontAttributes="Bold"
+                                   TextColor="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}" />
+                            <Label Text="Get results in under a second with a lightweight, optimized model fine-tuned for mobile performance."
+                                   FontSize="16"
+                                   TextColor="{AppThemeBinding Light={StaticResource LightSecondaryText}, Dark={StaticResource DarkPrimaryText}}" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout>
+                            <Label Text="🔍 Clear Prediction Output:"
+                                   FontSize="16"
+                                   Margin="0,0,0,5"
+                                   FontAttributes="Bold"
+                                   TextColor="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}" />
+                            <Label Text="Receive straightforward results: Pneumonia Detected or Normal, along with optional confidence scores."
+                                   FontSize="16"
+                                   TextColor="{AppThemeBinding Light={StaticResource LightSecondaryText}, Dark={StaticResource DarkPrimaryText}}" />
+                        </VerticalStackLayout>
+
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray900}}"
+                       CornerRadius="20"
+                       Padding="20"
+                       HasShadow="True">
+
+                    <VerticalStackLayout Spacing="16">
+                        <Label Text="⚠️ Disclaimer"
+                               FontSize="18"
+                               HorizontalTextAlignment="Center"
+                               Margin="0,0,0,8"
+                               FontAttributes="Bold"
+                               TextColor="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}" />
+                        <VerticalStackLayout>
+                            <Label Text="AI PneumoScan is not a medical device. This application is intended for educational, research, and informational purposes only. It is not approved by any medical regulatory authority and should not be used as a substitute for professional medical advice, diagnosis, or treatment."
+                                   FontSize="16"
+                                   Margin="0,0,0,15"
+                                   TextColor="{AppThemeBinding Light={StaticResource LightSecondaryText}, Dark={StaticResource DarkPrimaryText}}" />
+                            <Label Text="While the app uses advanced AI models trained on real medical datasets, results may vary and should not be solely relied upon for any clinical decision-making. Always consult a licensed physician or qualified healthcare provider regarding any medical concerns or before making any decisions based on the app’s output."
+                                   FontSize="16"
+                                   Margin="0,0,0,15"
+                                   TextColor="{AppThemeBinding Light={StaticResource LightSecondaryText}, Dark={StaticResource DarkPrimaryText}}" />
+                            <Label Text="By using this app, you agree that the developers and associated parties are not liable for any actions, outcomes, or consequences resulting from the use or interpretation of the app’s predictions."
+                                   FontSize="16"
+                                   Margin="0,0,0,15"
+                                   TextColor="{AppThemeBinding Light={StaticResource LightSecondaryText}, Dark={StaticResource DarkPrimaryText}}" />
+                        </VerticalStackLayout>
+
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Technologies / Credits -->
+                <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray900}}"
+                       CornerRadius="20"
+                       Padding="20"
+                       HasShadow="True">
+                    <VerticalStackLayout Padding="20" Spacing="25">
+                        <Label Text="🏷️ Data Attribution"
+                               FontSize="18"
+                               HorizontalTextAlignment="Center"
+                               Margin="0,0,0,8"
+                               FontAttributes="Bold"
+                               TextColor="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}" />
+
+                        <Label Text="🧬 Dataset: Chest X-ray Images (Pneumonia)"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}" />
+
+                        <Label Text="👤 Author: Paul Timothy Mooney"
+                               FontSize="16"
+                               TextColor="{AppThemeBinding Light={StaticResource LightSecondaryText}, Dark={StaticResource DarkPrimaryText}}" />
+
+                        <Label Text="🔗 Source: Kaggle"
+                               FontSize="16"
+                               TextColor="{AppThemeBinding Light={StaticResource LightSecondaryText}, Dark={StaticResource DarkPrimaryText}}" />
+
+                        <Label Text="https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia"
+                               FontSize="14"
+                               TextColor="#2980B9"
+                               TextDecorations="Underline"
+                               LineBreakMode="CharacterWrap">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenUrlCommand}" NumberOfTapsRequired="1"
+                                                      CommandParameter="https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia" />
+                            </Label.GestureRecognizers>
+                        </Label>
+
+                        <Label Text="🔗 License: Creative Commons Attribution 4.0 (CC BY 4.0)"
+                               FontSize="16"
+                               TextColor="{AppThemeBinding Light={StaticResource LightSecondaryText}, Dark={StaticResource DarkPrimaryText}}"/>
+
+                        <Label Text="https://creativecommons.org/licenses/by/4.0/"
+                               FontSize="14"
+                               TextColor="#2980B9"
+                               TextDecorations="Underline"
+                               LineBreakMode="CharacterWrap">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenUrlCommand}" NumberOfTapsRequired="1"
+                                                      CommandParameter="https://creativecommons.org/licenses/by/4.0/" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </VerticalStackLayout>
+                </Frame>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+
+        
+</ContentPage>

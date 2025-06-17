@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightPrimaryBg}, Dark={StaticResource DarkPrimaryBg}}"
+             x:Class="AIPneumoScan.Views.ResultPage"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             Title="ResultPage">
+
+    <ContentPage.Behaviors>
+        <mct:StatusBarBehavior StatusBarColor="{AppThemeBinding Light={StaticResource LightPrimaryBg}, Dark={StaticResource DarkPrimaryBg}}" StatusBarStyle="{AppThemeBinding Light=DarkContent, Dark=LightContent}"/>
+    </ContentPage.Behaviors>
+
+    <VerticalStackLayout Padding="30" Spacing="25"
+                         VerticalOptions="CenterAndExpand"
+                         HorizontalOptions="CenterAndExpand">
+
+        <!-- Status Icon -->
+        <Image x:Name="ResultIcon"
+               HeightRequest="200"
+               WidthRequest="200"
+               Aspect="AspectFit"
+               Source="{Binding ResultIcon}" />
+
+        <!-- Main Result -->
+        <Label Text="{Binding DiagnosisResult}"
+               FontSize="28"
+               Margin="0,20,0,0"
+               FontAttributes="Bold"
+               TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource DarkPrimaryText}}"
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center" />
+
+        <!-- Confidence or Explanation -->
+        <Label Text="{Binding DiagnosisMessage}"
+               FontSize="16"
+               TextColor="{AppThemeBinding Light={StaticResource LightSecondaryText}, Dark={StaticResource DarkSecondaryText}}"
+               HorizontalTextAlignment="Center"
+               Margin="30,20" />
+
+        <!-- Action Button -->
+        <Button Text="Scan Another X-ray"
+                Command="{Binding BackCommand}"
+                TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkPrimaryText}}"
+                BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Primary}}"
+                FontAttributes="Bold"
+                HeightRequest="50"
+                CornerRadius="12"
+                Padding="10,5" />
+    </VerticalStackLayout>
+</ContentPage>

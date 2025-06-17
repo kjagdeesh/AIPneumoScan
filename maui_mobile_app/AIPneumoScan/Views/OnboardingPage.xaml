@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AIPneumoScan.Views.OnboardingPage"
+             xmlns:controls="clr-namespace:AIPneumoScan.Controls"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightPrimaryBg}, Dark={StaticResource DarkPrimaryBg}}"
+             Title="OnboardingPage">
+
+    <ContentPage.Behaviors>
+        <mct:StatusBarBehavior StatusBarColor="{AppThemeBinding Light={StaticResource LightPrimaryBg}, Dark={StaticResource DarkPrimaryBg}}" StatusBarStyle="{AppThemeBinding Light=DarkContent, Dark=LightContent}"/>
+    </ContentPage.Behaviors>
+
+    <Grid>
+        <CarouselView x:Name="Carousel"
+              ItemsSource="{Binding OnboardingItems}"
+              IsBounceEnabled="False"
+              Loop="False"
+              IndicatorView="Indicator"
+              IsSwipeEnabled="True"
+              Position="{Binding CurrentPosition}">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="24" RowSpacing="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <!-- Illustration -->
+                        <Image Source="{Binding Image}" Aspect="AspectFit" Grid.Row="0" />
+
+                        <!-- Title -->
+                        <Label Text="{Binding Title}" 
+                               FontSize="24"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="Center"
+                               TextColor="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}" 
+                               Grid.Row="1" />
+
+                        <!-- Description -->
+                        <Label Text="{Binding Description}"
+                               FontSize="16"
+                               HorizontalTextAlignment="Center"
+                               TextColor="{AppThemeBinding Light={StaticResource LightSecondaryText}, Dark={StaticResource DarkPrimaryText}}"
+                               Margin="10,5"
+                               Grid.Row="2" />
+
+                        <!-- Slide 5 input -->
+                        <StackLayout Grid.Row="3" Margin="0,20,0,0"
+                                     IsVisible="{Binding IsLast}">
+                            <Label Text="Please enter your full name:"
+                                   FontSize="16"
+                                   Margin="0,0,0,4"
+                                   TextColor="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}"  />
+                            <Entry
+                                   Placeholder="Enter your name"
+                                   HeightRequest="50"
+                                   FontSize="16"
+                                   Text="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.UserName}"
+                                   BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray900}}"
+                                   TextColor="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}"  />
+                        </StackLayout>
+
+                        <!-- Button -->
+                        <Button Text="{Binding ButtonText}"
+                                IsVisible="{Binding ShowButton}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NextCommand}"
+                                Margin="0,10,0,50"
+                                BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Primary}}"
+                                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryBg}, Dark={StaticResource DarkPrimaryText}}"
+                                CornerRadius="12"
+                                HeightRequest="48"
+                                Grid.Row="4" />
+                    </Grid>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+
+        <!-- Indicator Dots -->
+        <IndicatorView x:Name="Indicator"
+                       IndicatorsShape="Circle"
+                       IndicatorColor="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}"
+                       SelectedIndicatorColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource DarkPrimaryText}}"
+                       Margin="0,10"
+                       HorizontalOptions="Center"
+                       VerticalOptions="End"
+                       Count="{Binding OnboardingItems.Count}"
+                       Position="{Binding CurrentPosition}" />
+    </Grid>
+
+
+</ContentPage>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AIPneumoScan.Views.HomePage"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             NavigationPage.HasBackButton="False"
+             xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightPrimaryBg}, Dark={StaticResource DarkPrimaryBg}}"
+             Title="Pneumonia Detection">
+
+    <ContentPage.Behaviors>
+        <mct:StatusBarBehavior StatusBarColor="{AppThemeBinding Light={StaticResource LightPrimaryBg}, Dark={StaticResource DarkPrimaryBg}}" StatusBarStyle="{AppThemeBinding Light=DarkContent, Dark=LightContent}"/>
+    </ContentPage.Behaviors>
+
+    <Grid>
+
+        <Grid Grid.Row="0" Padding="20,30,20,20" RowDefinitions="130,2*">
+
+            <Grid ColumnDefinitions="*, 70" Grid.Row="0" >
+                <StackLayout Padding="0" Margin="0" Grid.Column="1" BackgroundColor="Transparent" VerticalOptions="Center">
+                    <Image Source="ic_home_user.png" WidthRequest="70" HeightRequest="70"/>
+                </StackLayout>
+                <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
+                    <HorizontalStackLayout>
+                        <Label Text="Hi " FontSize="26" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkSecondaryText}}"/>
+                        <Label Text="{Binding UserFullName}" FontSize="26" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource DarkPrimaryText}}"/>
+                    </HorizontalStackLayout>
+                    <Label Padding="0,5,0,0" FontSize="16" Text="Early Detection, Healthier Lungs." TextColor="{AppThemeBinding Light={StaticResource LightSecondaryText}, Dark={StaticResource DarkSecondaryText}}"/>
+                </VerticalStackLayout>
+            </Grid>
+
+            <VerticalStackLayout Margin="0,0,0,0" Grid.Row="1" VerticalOptions="Center">
+                <Frame CornerRadius="20" WidthRequest="200" HeightRequest="200" Padding="0" Margin="0" HorizontalOptions="Center" BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray100}}" BorderColor="Transparent">
+                    <Image HeightRequest="200" 
+                           WidthRequest="200"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Source="{Binding SelectedImage}">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding PickImageCommand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Frame>
+
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="30" Margin="0,60,0,0">
+                    <Frame WidthRequest="60" HeightRequest="60" Padding="15" Margin="0" CornerRadius="30" BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Primary}}">
+                        <Image Source="gallery.png">
+                            <Image.Behaviors>
+                                <mct:IconTintColorBehavior TintColor="White"/>
+                            </Image.Behaviors>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding PickImageCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Frame>
+                    <Frame WidthRequest="60" HeightRequest="60" Padding="15" Margin="0" CornerRadius="30" BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Primary}}">
+                        <Image Source="camera.png">
+                            <Image.Behaviors>
+                                <mct:IconTintColorBehavior TintColor="White"/>
+                            </Image.Behaviors>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding CaptureImageCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Frame>
+                </HorizontalStackLayout>
+
+                <Button CornerRadius="10" Text="Analyze X-Ray" FontSize="18" FontAttributes="Bold" Margin="20,40,20,0"
+                        Command="{Binding AnalyzeXRay}"
+                        TextColor="{AppThemeBinding Light={StaticResource LightPrimaryBg}, Dark={StaticResource DarkPrimaryText}}"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Primary}}"/>
+
+                <!--<Frame Margin="0,30,0,0" Padding="5">
+                    <Label Text="{Binding PredictionResult}" 
+                           FontAttributes="Bold"
+                           FontSize="24"
+                           TextColor="DarkRed"
+                           HorizontalOptions="Center" />
+                </Frame>-->
+            </VerticalStackLayout>
+
+        </Grid>
+
+        <!-- Loader {Binding IsBusy} -->
+        <Grid Grid.Row="0" IsVisible="{Binding IsBusy}">
+            <StackLayout BackgroundColor="Black" Opacity="0.5">
+
+            </StackLayout>
+            <Frame CornerRadius="100" Padding="0" WidthRequest="200" HeightRequest="200" BorderColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkSecondaryText}}" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkPrimaryBg}}">
+                <skia:SKLottieView RepeatCount="-1"
+                       RepeatMode="Reverse"
+                       Source="loader_light.json"
+                       HeightRequest="200"
+                       BackgroundColor="Transparent"
+                       WidthRequest="200" />
+            </Frame>
+        </Grid>
+    </Grid>
+    
+</ContentPage>

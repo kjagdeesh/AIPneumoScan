@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="AIPneumoScan.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:AIPneumoScan"
+    xmlns:views="clr-namespace:AIPneumoScan.Views"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarBackgroundColor="{AppThemeBinding Light=#dae3ff, Dark={StaticResource Gray900}}"
+    Shell.TabBarForegroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}"
+    Shell.TabBarUnselectedColor="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray400}}"
+    Shell.TabBarDisabledColor="{StaticResource Gray100}"
+    Shell.TabBarTitleColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}"
+    Title="AIPneumoScan">
+
+    <ShellContent Route="OnboardingPage" ContentTemplate="{DataTemplate views:OnboardingPage}" />
+    <ShellContent Route="OnboardingPage" ContentTemplate="{DataTemplate views:OnboardingPage}" />
+
+    <TabBar>
+        <ShellContent Title="Home"
+                      Route="HomePage" 
+                      Icon="ic_home.png"
+                      ContentTemplate="{DataTemplate views:HomePage}">
+        </ShellContent>
+
+        <ShellContent Title="Settings"
+                      Icon="ic_settings.png"
+                      ContentTemplate="{DataTemplate views:SettingPage}" />
+
+        <ShellContent Title="About"
+                      Icon="ic_about.png"
+                      ContentTemplate="{DataTemplate views:AboutPage}" />
+        
+        <ShellContent Title="GitHub"
+                      Icon="github.png"
+                      ContentTemplate="{DataTemplate views:ProjectDetailsPage}" />
+    </TabBar>
+
+</Shell>

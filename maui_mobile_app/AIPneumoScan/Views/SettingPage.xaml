@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AIPneumoScan.Views.SettingPage"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             NavigationPage.HasBackButton="False"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightPrimaryBg}, Dark={StaticResource DarkPrimaryBg}}"
+             Title="Setting">
+
+    <ContentPage.Behaviors>
+        <mct:StatusBarBehavior StatusBarColor="{AppThemeBinding Light={StaticResource LightPrimaryBg}, Dark={StaticResource DarkPrimaryBg}}" StatusBarStyle="{AppThemeBinding Light=DarkContent, Dark=LightContent}"/>
+    </ContentPage.Behaviors>
+
+    <Grid RowDefinitions="*,Auto">
+        <ScrollView>
+            <VerticalStackLayout Padding="24" Spacing="32">
+
+                <!-- Header -->
+                <Label Text="Appearance"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="{AppThemeBinding Light=#1A1A1A, Dark=#FFFFFF}" />
+
+                <!-- Theme Options Card -->
+                <Frame BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}"
+                       CornerRadius="20"
+                       HasShadow="True"
+                       Padding="20">
+
+                    <HorizontalStackLayout Spacing="20">
+                        <!-- Illustration -->
+                        <Image HeightRequest="150"
+                           HorizontalOptions="Center"
+                           Source="{Binding SelectedThemeIndex, Converter={StaticResource ThemeImageConverter}}" />
+
+
+                        <!-- Radio Group -->
+
+                        <VerticalStackLayout x:Name="ThemeOptions" Spacing="10">
+                            <RadioButton Content="Light"
+                                     GroupName="ThemeGroup"
+                                     Value="0"
+                                     IsChecked="{Binding SelectedThemeIndex, Converter={StaticResource IntToBoolConverter}, ConverterParameter=0}" />
+
+                            <RadioButton Content="Dark"
+                                     GroupName="ThemeGroup"
+                                     Value="1"
+                                     IsChecked="{Binding SelectedThemeIndex, Converter={StaticResource IntToBoolConverter}, ConverterParameter=1}" />
+
+                            <RadioButton Content="System"
+                                     GroupName="ThemeGroup"
+                                     Value="2"
+                                     IsChecked="{Binding SelectedThemeIndex, Converter={StaticResource IntToBoolConverter}, ConverterParameter=2}" />
+                        </VerticalStackLayout>
+
+                    </HorizontalStackLayout>
+                </Frame>
+
+                <!-- Preview Card -->
+                <Label Text="Preview"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="{AppThemeBinding Light=#1A1A1A, Dark=#FFFFFF}" />
+
+                <Frame CornerRadius="16"
+                   BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}"
+                   Padding="16"
+                   HasShadow="True">
+
+                    <VerticalStackLayout>
+                        <Label Text="Example Card Title"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light=#222, Dark=#eee}" />
+
+                        <Label Text="This is a preview of how the app looks in the selected theme."
+                           FontSize="14"
+                           TextColor="{AppThemeBinding Light=#555, Dark=#ccc}" />
+                    </VerticalStackLayout>
+                </Frame>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>
