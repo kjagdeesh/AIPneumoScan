@@ -166,7 +166,7 @@ You can query it in Python or integrate with the MAUI result view.
 
 ## 📸 Screenshots
 
-_Add screenshots of splash, onboarding, home, result pages here._
+
 
 ---
 
