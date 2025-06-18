@@ -87,9 +87,8 @@
                                TextDecorations="Underline"
                                LineBreakMode="CharacterWrap">
                             <Label.GestureRecognizers>
-                                <TapGestureRecognizer
-                                    Command="{Binding OpenUrlCommand}" NumberOfTapsRequired="1"
-                                    CommandParameter="https://github.com/kjagdeesh/AIPneumoScan" />
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="1"
+                                    />
                             </Label.GestureRecognizers>
                         </Label>
                     </VerticalStackLayout>

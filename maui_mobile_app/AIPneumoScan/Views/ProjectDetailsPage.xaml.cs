@@ -14,4 +14,10 @@ public partial class ProjectDetailsPage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+        string url = "https://github.com/kjagdeesh/AIPneumoScan";
+        await Launcher.Default.OpenAsync(url);
+    }
 }
