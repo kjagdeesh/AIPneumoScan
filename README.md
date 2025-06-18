@@ -166,7 +166,11 @@ You can query it in Python or integrate with the MAUI result view.
 
 ## 📸 Screenshots
 
+<img src="https://github.com/kjagdeesh/AIPneumoScan/blob/master/images/0.jpg" width="600"/>
 
+##### 📸 More Screenshots
+
+You can view additional app screenshots in the [images folder](https://github.com/kjagdeesh/AIPneumoScan/tree/master/images).
 
 ---
 
