@@ -21,7 +21,7 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>AIPneumoScan</ApplicationTitle>
+		<ApplicationTitle>AI PneumoScan</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.aipneumoscan</ApplicationId>

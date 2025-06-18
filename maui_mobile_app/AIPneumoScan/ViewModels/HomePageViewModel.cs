@@ -128,32 +128,34 @@ namespace AIPneumoScan.ViewModels
         {
             if (!string.IsNullOrEmpty(_lastImagePath))
             {
-                PredictionResult = _predictor.Predict(_lastImagePath);
-            }
-
-            try
-            {
-                IsBusy = true;
-                await Task.Delay(1000);
-
-                await Task.Run(() =>
+                try
                 {
-                    var result = _predictor.Predict(_lastImagePath);
-                    MainThread.BeginInvokeOnMainThread(() => PredictionResult = result);
-                });
+                    IsBusy = true;
+                    await Task.Delay(1000);
 
-                IsBusy = false;
-                
-                Preferences.Set("PneumoniaStatus", PredictionResult);
-                await Shell.Current.GoToAsync("ResultPage");
+                    await Task.Run(() =>
+                    {
+                        var result = _predictor.Predict(_lastImagePath);
+                        MainThread.BeginInvokeOnMainThread(() => PredictionResult = result);
+                    });
+
+                    IsBusy = false;
+
+                    Preferences.Set("PneumoniaStatus", PredictionResult);
+                    await Shell.Current.GoToAsync("ResultPage");
+                }
+                catch (Exception ex)
+                {
+                    PredictionResult = $"Error: {ex.Message}";
+                }
+                finally
+                {
+                    IsBusy = false;
+                }
             }
-            catch (Exception ex)
+            else
             {
-                PredictionResult = $"Error: {ex.Message}";
-            }
-            finally
-            {
-                IsBusy = false;
+                await Shell.Current.DisplayAlert("Error", $"Kindly select an image to proceed.", "OK");
             }
         }
     }
